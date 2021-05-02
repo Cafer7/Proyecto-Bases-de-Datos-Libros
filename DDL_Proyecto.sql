@@ -48,7 +48,9 @@ CREATE TABLE public."Autor" (
 -- DROP TABLE IF EXISTS public."Autor_Libro" CASCADE;
 CREATE TABLE public."Autor_Libro" (
 	"Id_Autor" integer NOT NULL,
-	"Id_Libro" integer NOT NULL
+	"Id_Libro" integer NOT NULL,
+	CONSTRAINT "Autor_Libro_pk" PRIMARY KEY ("Id_Autor","Id_Libro")
+
 );
 -- ddl-end --
 -- ALTER TABLE public."Autor_Libro" OWNER TO postgres;
