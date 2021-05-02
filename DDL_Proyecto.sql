@@ -37,7 +37,6 @@ CREATE TABLE public."Libro" (
 CREATE TABLE public."Autor" (
 	"Id" serial NOT NULL,
 	nombre varchar,
-	apellido varchar,
 	CONSTRAINT "Autor_pk" PRIMARY KEY ("Id")
 
 );
