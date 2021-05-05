@@ -30,11 +30,11 @@ df_tabla_editorial = pd.DataFrame(tabla_editorial, columns=["id","editorial"])
 #
 # figBarCases = px.bar(df_tabla_autor.head(20), x="country", y="amount")
 #
-# figBarCases = px.bar(dfCases.head(20), x="country", y="amount")
+# figBarCases = px.bar(df_tabla_autor_libro.head(20), x="country", y="amount")
 #
-# figBarCases = px.bar(dfCases.head(20), x="country", y="amount")
+# figBarCases = px.bar(df_tabla_idioma.head(20), x="country", y="amount")
 #
-# figBarCases = px.bar(dfCases.head(20), x="country", y="amount")
+# figBarCases = px.bar(df_tabla_editorial.head(20), x="country", y="amount")
 
 
 ###############################################################################
