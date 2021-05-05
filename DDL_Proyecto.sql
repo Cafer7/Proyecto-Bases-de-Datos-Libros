@@ -20,7 +20,7 @@ CREATE TABLE public.libro (
 	titulo varchar,
 	"fecha_publicación" date,
 	"num_páginas" smallint,
-	ranking smallint,
+	ranking double precision,
 	num_votantes_libro smallint,
 	num_comentarios smallint,
 	"Id_idioma" char(4) NOT NULL,

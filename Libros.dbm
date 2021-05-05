@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="595,805" last-zoom="1" max-obj-count="6"
+<dbmodel pgmodeler-ver="0.9.2" last-position="176,494" last-zoom="1" max-obj-count="6"
 	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -28,7 +28,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="smallint" length="0"/>
 	</column>
 	<column name="ranking">
-		<type name="smallint" length="0"/>
+		<type name="double precision" length="0"/>
 	</column>
 	<column name="num_votantes_libro">
 		<type name="smallint" length="0"/>
