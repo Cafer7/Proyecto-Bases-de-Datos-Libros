@@ -14,7 +14,9 @@ class Connection:
         self.connection.close()
 
 def leer_tabla_autor():
-    return "SELECT * FROM autor"
+    dataframepanda = "SELECT * FROM autor"
+    print(dataframepanda)
+
 
 def leer_tabla_libro():
     return "SELECT * FROM libro"
