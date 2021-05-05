@@ -23,8 +23,8 @@ CREATE TABLE public.libro (
 	ranking smallint,
 	num_votantes_libro smallint,
 	num_comentarios smallint,
-	"Id_idioma" integer NOT NULL,
-	"Id_editorial" char(4) NOT NULL,
+	"Id_idioma" char(4) NOT NULL,
+	"Id_editorial" integer NOT NULL,
 	CONSTRAINT "Libro_pk" PRIMARY KEY ("Id")
 
 );
@@ -57,7 +57,7 @@ CREATE TABLE public.autor_libro (
 -- object: public.editorial | type: TABLE --
 -- DROP TABLE IF EXISTS public.editorial CASCADE;
 CREATE TABLE public.editorial (
-	"Id" char(4) NOT NULL,
+	"Id" serial NOT NULL,
 	nombre_editorial varchar,
 	CONSTRAINT "Editorial_pk" PRIMARY KEY ("Id")
 
@@ -69,7 +69,7 @@ CREATE TABLE public.editorial (
 -- object: public.idioma | type: TABLE --
 -- DROP TABLE IF EXISTS public.idioma CASCADE;
 CREATE TABLE public.idioma (
-	"Id" serial NOT NULL,
+	"Id" char(4) NOT NULL,
 	nombre_idioma char(10),
 	CONSTRAINT "Idioma_pk" PRIMARY KEY ("Id")
 

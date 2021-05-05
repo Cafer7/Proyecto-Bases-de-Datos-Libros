@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="597,546" last-zoom="1" max-obj-count="6"
+<dbmodel pgmodeler-ver="0.9.2" last-position="596,545" last-zoom="1" max-obj-count="6"
 	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -87,7 +87,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<position x="1280" y="1240"/>
 	<column name="Id" not-null="true">
-		<type name="char" length="4"/>
+		<type name="serial" length="4"/>
 	</column>
 	<column name="nombre_editorial">
 		<type name="varchar" length="0"/>
@@ -102,7 +102,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<role name="postgres"/>
 	<position x="1280" y="980"/>
 	<column name="Id" not-null="true">
-		<type name="serial" length="0"/>
+		<type name="char" length="4"/>
 	</column>
 	<column name="nombre_idioma">
 		<type name="char" length="10"/>
