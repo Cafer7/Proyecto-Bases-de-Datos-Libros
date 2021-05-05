@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="596,545" last-zoom="1" max-obj-count="6"
+<dbmodel pgmodeler-ver="0.9.2" last-position="595,805" last-zoom="1" max-obj-count="6"
 	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -105,7 +105,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="char" length="4"/>
 	</column>
 	<column name="nombre_idioma">
-		<type name="char" length="10"/>
+		<type name="char" length="20"/>
 	</column>
 	<constraint name="Idioma_pk" type="pk-constr" table="public.idioma">
 		<columns names="Id" ref-type="src-columns"/>

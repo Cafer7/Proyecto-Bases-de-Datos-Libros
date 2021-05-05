@@ -70,7 +70,7 @@ CREATE TABLE public.editorial (
 -- DROP TABLE IF EXISTS public.idioma CASCADE;
 CREATE TABLE public.idioma (
 	"Id" char(4) NOT NULL,
-	nombre_idioma char(10),
+	nombre_idioma char(20),
 	CONSTRAINT "Idioma_pk" PRIMARY KEY ("Id")
 
 );
