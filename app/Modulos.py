@@ -1,12 +1,16 @@
 import psycopg2
-import pandas
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import plotly.express as px
+import pandas as pd
 class Connection:
     def __init__(self):
         self.connection = None
     def openConnection(self):
         try:
             self.connection =
-            psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres_libros",password="123456")
+            psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
         except Exception as e:
             print (e)
 
@@ -14,9 +18,7 @@ class Connection:
         self.connection.close()
 
 def leer_tabla_autor():
-    dataframepanda = "SELECT * FROM autor"
-    print(dataframepanda)
-
+    return "SELECT * FROM autor"
 
 def leer_tabla_libro():
     return "SELECT * FROM libro"
