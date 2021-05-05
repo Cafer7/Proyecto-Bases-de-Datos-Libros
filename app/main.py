@@ -12,7 +12,7 @@ tabla_editorial = pd.read_sql_query(leer_tabla_editorial(), con.connection)
 con.closeConnection()
 ###############################################################################
 #Creando DataFrame de cada tabla
-df_tabla_libro = pd.DataFrame(tabla_libro, columns=["id","titulo","fecha_publicación","num_páginas,ranking","num_votantes_libro","num_comentarios","Id_idioma","id_editorial"])
+df_tabla_libro = pd.DataFrame(tabla_libro, columns=["id","titulo","fecha_publicación","num_páginas","ranking","num_votantes_libro","num_comentarios","Id_idioma","id_editorial"])
 df_tabla_autor = pd.DataFrame(tabla_autor, columns=["id", "nombre"])
 df_tabla_autor_libro = pd.DataFrame(tabla_autor_libro, columns=["id_autor","id_libro"])
 df_tabla_idioma = pd.DataFrame(tabla_idioma, columns=["id","nombre_idioma"])
@@ -42,5 +42,9 @@ df_tabla_editorial = pd.DataFrame(tabla_editorial, columns=["id","editorial"])
 ###############################################################################
 #consultas a las tablas
 print(df_tabla_libro)
+print(df_tabla_autor)
+print(df_tabla_editorial)
+print(df_tabla_autor_libro)
+print(df_tabla_idioma)
 
 ###############################################################################
