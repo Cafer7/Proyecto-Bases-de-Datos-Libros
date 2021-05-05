@@ -17,7 +17,7 @@ df_tabla_autor = pd.DataFrame(tabla_autor, columns=["id", "nombre"])
 df_tabla_autor_libro = pd.DataFrame(tabla_autor_libro, columns=["id_autor","id_libro"])
 df_tabla_idioma = pd.DataFrame(tabla_idioma, columns=["id","nombre_idioma"])
 df_tabla_editorial = pd.DataFrame(tabla_editorial, columns=["id","editorial"])
-###############################################################################
+################################################################################
 #Creando diagramas de barras y mapas
 #Que país publica más libros
 
