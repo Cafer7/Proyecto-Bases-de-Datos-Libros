@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="697,768" last-zoom="1" max-obj-count="6"
+<dbmodel pgmodeler-ver="0.9.2" last-position="597,546" last-zoom="1" max-obj-count="6"
 	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -11,7 +11,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
-<table name="Libro" layer="0" collapse-mode="2" max-obj-count="10">
+<table name="libro" layer="0" collapse-mode="2" max-obj-count="10">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="620" y="1060"/>
@@ -36,22 +36,22 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="num_comentarios">
 		<type name="smallint" length="0"/>
 	</column>
-	<constraint name="Libro_pk" type="pk-constr" table="public.&quot;Libro&quot;">
+	<constraint name="Libro_pk" type="pk-constr" table="public.libro">
 		<columns names="Id" ref-type="src-columns"/>
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="Id_Editorial" index="8"/>
-		<object name="Id_Idioma" index="7"/>
+		<object name="Id_editorial" index="8"/>
+		<object name="Id_idioma" index="7"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
-		<object name="Editorial_fk" index="2"/>
-		<object name="Idioma_fk" index="1"/>
+		<object name="editorial_fk" index="2"/>
+		<object name="idioma_fk" index="1"/>
 	</customidxs>
 </table>
 
-<table name="Autor" layer="0" collapse-mode="2" max-obj-count="2">
+<table name="autor" layer="0" collapse-mode="2" max-obj-count="2">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1200" y="600"/>
@@ -61,33 +61,43 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="nombre">
 		<type name="varchar" length="0"/>
 	</column>
-	<constraint name="Autor_pk" type="pk-constr" table="public.&quot;Autor&quot;">
+	<constraint name="Autor_pk" type="pk-constr" table="public.autor">
 		<columns names="Id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="Autor_Libro" layer="0" collapse-mode="2" max-obj-count="2">
+<table name="autor_libro" layer="0" collapse-mode="2" max-obj-count="2">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="640" y="620"/>
+
+	<customidxs object-type="column">
+		<object name="Id_autor" index="0"/>
+		<object name="Id_libro" index="1"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="autor_fk" index="0"/>
+		<object name="libro_fk" index="1"/>
+	</customidxs>
 </table>
 
-<table name="Editorial" layer="0" collapse-mode="2" max-obj-count="2">
+<table name="editorial" layer="0" collapse-mode="2" max-obj-count="2">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1280" y="1220"/>
+	<position x="1280" y="1240"/>
 	<column name="Id" not-null="true">
 		<type name="char" length="4"/>
 	</column>
 	<column name="nombre_editorial">
 		<type name="varchar" length="0"/>
 	</column>
-	<constraint name="Editorial_pk" type="pk-constr" table="public.&quot;Editorial&quot;">
+	<constraint name="Editorial_pk" type="pk-constr" table="public.editorial">
 		<columns names="Id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
-<table name="Idioma" layer="0" collapse-mode="2" max-obj-count="2">
+<table name="idioma" layer="0" collapse-mode="2" max-obj-count="2">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1280" y="980"/>
@@ -97,7 +107,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="nombre_idioma">
 		<type name="char" length="10"/>
 	</column>
-	<constraint name="Idioma_pk" type="pk-constr" table="public.&quot;Idioma&quot;">
+	<constraint name="Idioma_pk" type="pk-constr" table="public.idioma">
 		<columns names="Id" ref-type="src-columns"/>
 	</constraint>
 </table>
@@ -107,8 +117,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#77cc3e"
-	 src-table="public.&quot;Idioma&quot;"
-	 dst-table="public.&quot;Libro&quot;"
+	 src-table="public.idioma"
+	 dst-table="public.libro"
 	 src-required="true" dst-required="false">
 	<label ref-type="src-label">
 		<position x="-14.15" y="-5.79152"/>
@@ -123,8 +133,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#db9cb5"
-	 src-table="public.&quot;Editorial&quot;"
-	 dst-table="public.&quot;Libro&quot;"
+	 src-table="public.editorial"
+	 dst-table="public.libro"
 	 src-required="true" dst-required="false">
 	<label ref-type="src-label">
 		<position x="-34.15" y="11.705"/>
@@ -139,8 +149,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#11a4f1"
-	 src-table="public.&quot;Autor&quot;"
-	 dst-table="public.&quot;Autor_Libro&quot;"
+	 src-table="public.autor"
+	 dst-table="public.autor_libro"
 	 src-required="true" dst-required="false">
 	<label ref-type="name-label">
 		<position x="7.21671" y="-20.3857"/>
@@ -152,8 +162,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
 	 src-fk-pattern="{st}_fk"
 	 custom-color="#9098eb"
-	 src-table="public.&quot;Libro&quot;"
-	 dst-table="public.&quot;Autor_Libro&quot;"
+	 src-table="public.libro"
+	 dst-table="public.autor_libro"
 	 src-required="true" dst-required="false">
 	<label ref-type="name-label">
 		<position x="1.68092" y="-23.5857"/>
