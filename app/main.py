@@ -4,11 +4,11 @@ from Modulos import *
 #Conexión a la base de datos
 con = Connection()
 con.openConnection()
-tabla_libro = pd.read_sql_query(sql.leer_tabla_libro(), con.connection)
-tabla_autor = pd.read_sql_query(sql.leer_tabla_autor(), con.connection)
-tabla_autor_libro = pd.read_sql_query(sql.leer_tabla_autor_libro(), con.connection)
-tabla_idioma = pd.read_sql_query(sql.leer_tabla_idioma(), con.connection)
-tabla_editorial = pd.read_sql_query(sql.leer_tabla_editorial(), con.connection)
+tabla_libro = pd.read_sql_query(leer_tabla_libro(), con.connection)
+tabla_autor = pd.read_sql_query(leer_tabla_autor(), con.connection)
+tabla_autor_libro = pd.read_sql_query(leer_tabla_autor_libro(), con.connection)
+tabla_idioma = pd.read_sql_query(leer_tabla_idioma(), con.connection)
+tabla_editorial = pd.read_sql_query(leer_tabla_editorial(), con.connection)
 con.closeConnection()
 ###############################################################################
 #Creando DataFrame de cada tabla
