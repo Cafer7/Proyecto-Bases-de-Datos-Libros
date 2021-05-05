@@ -21,8 +21,8 @@ CREATE TABLE public.libro (
 	"fecha_publicación" date,
 	"num_páginas" smallint,
 	ranking double precision,
-	num_votantes_libro smallint,
-	num_comentarios smallint,
+	num_votantes_libro bigint,
+	num_comentarios bigint,
 	"Id_idioma" char(4) NOT NULL,
 	"Id_editorial" integer NOT NULL,
 	CONSTRAINT "Libro_pk" PRIMARY KEY ("Id")

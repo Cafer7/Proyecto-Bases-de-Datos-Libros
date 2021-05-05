@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="176,494" last-zoom="1" max-obj-count="6"
+<dbmodel pgmodeler-ver="0.9.2" last-position="175,493" last-zoom="1" max-obj-count="6"
 	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -31,10 +31,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="double precision" length="0"/>
 	</column>
 	<column name="num_votantes_libro">
-		<type name="smallint" length="0"/>
+		<type name="bigint" length="0"/>
 	</column>
 	<column name="num_comentarios">
-		<type name="smallint" length="0"/>
+		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="Libro_pk" type="pk-constr" table="public.libro">
 		<columns names="Id" ref-type="src-columns"/>
