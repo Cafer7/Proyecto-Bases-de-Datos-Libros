@@ -13,9 +13,9 @@
 -- -- ddl-end --
 -- 
 
--- object: public."Libro" | type: TABLE --
--- DROP TABLE IF EXISTS public."Libro" CASCADE;
-CREATE TABLE public."Libro" (
+-- object: public.libro | type: TABLE --
+-- DROP TABLE IF EXISTS public.libro CASCADE;
+CREATE TABLE public.libro (
 	"Id" serial NOT NULL,
 	titulo varchar,
 	"fecha_publicación" date,
@@ -23,88 +23,86 @@ CREATE TABLE public."Libro" (
 	ranking smallint,
 	num_votantes_libro smallint,
 	num_comentarios smallint,
-	"Id_Idioma" integer NOT NULL,
-	"Id_Editorial" integer NOT NULL,
+	"Id_idioma" integer NOT NULL,
+	"Id_editorial" char(4) NOT NULL,
 	CONSTRAINT "Libro_pk" PRIMARY KEY ("Id")
 
 );
 -- ddl-end --
--- ALTER TABLE public."Libro" OWNER TO postgres;
+-- ALTER TABLE public.libro OWNER TO postgres;
 -- ddl-end --
 
--- object: public."Autor" | type: TABLE --
--- DROP TABLE IF EXISTS public."Autor" CASCADE;
-CREATE TABLE public."Autor" (
+-- object: public.autor | type: TABLE --
+-- DROP TABLE IF EXISTS public.autor CASCADE;
+CREATE TABLE public.autor (
 	"Id" serial NOT NULL,
 	nombre varchar,
 	CONSTRAINT "Autor_pk" PRIMARY KEY ("Id")
 
 );
 -- ddl-end --
--- ALTER TABLE public."Autor" OWNER TO postgres;
+-- ALTER TABLE public.autor OWNER TO postgres;
 -- ddl-end --
 
--- object: public."Autor_Libro" | type: TABLE --
--- DROP TABLE IF EXISTS public."Autor_Libro" CASCADE;
-CREATE TABLE public."Autor_Libro" (
-	"Id_Autor" integer NOT NULL,
-	"Id_Libro" integer NOT NULL,
-	CONSTRAINT "Autor_Libro_pk" PRIMARY KEY ("Id_Autor","Id_Libro")
-
+-- object: public.autor_libro | type: TABLE --
+-- DROP TABLE IF EXISTS public.autor_libro CASCADE;
+CREATE TABLE public.autor_libro (
+	"Id_autor" integer NOT NULL,
+	"Id_libro" integer NOT NULL
 );
 -- ddl-end --
--- ALTER TABLE public."Autor_Libro" OWNER TO postgres;
+-- ALTER TABLE public.autor_libro OWNER TO postgres;
 -- ddl-end --
 
--- object: public."Editorial" | type: TABLE --
--- DROP TABLE IF EXISTS public."Editorial" CASCADE;
-CREATE TABLE public."Editorial" (
-	"Id" serial NOT NULL,
-	nombre_editorial smallint,
+-- object: public.editorial | type: TABLE --
+-- DROP TABLE IF EXISTS public.editorial CASCADE;
+CREATE TABLE public.editorial (
+	"Id" char(4) NOT NULL,
+	nombre_editorial varchar,
 	CONSTRAINT "Editorial_pk" PRIMARY KEY ("Id")
 
 );
 -- ddl-end --
--- ALTER TABLE public."Editorial" OWNER TO postgres;
+-- ALTER TABLE public.editorial OWNER TO postgres;
 -- ddl-end --
 
--- object: public."Idioma" | type: TABLE --
--- DROP TABLE IF EXISTS public."Idioma" CASCADE;
-CREATE TABLE public."Idioma" (
+-- object: public.idioma | type: TABLE --
+-- DROP TABLE IF EXISTS public.idioma CASCADE;
+CREATE TABLE public.idioma (
 	"Id" serial NOT NULL,
 	nombre_idioma char(10),
 	CONSTRAINT "Idioma_pk" PRIMARY KEY ("Id")
 
 );
 -- ddl-end --
--- ALTER TABLE public."Idioma" OWNER TO postgres;
+-- ALTER TABLE public.idioma OWNER TO postgres;
 -- ddl-end --
 
--- object: "Idioma_fk" | type: CONSTRAINT --
--- ALTER TABLE public."Libro" DROP CONSTRAINT IF EXISTS "Idioma_fk" CASCADE;
-ALTER TABLE public."Libro" ADD CONSTRAINT "Idioma_fk" FOREIGN KEY ("Id_Idioma")
-REFERENCES public."Idioma" ("Id") MATCH FULL
+-- object: idioma_fk | type: CONSTRAINT --
+-- ALTER TABLE public.libro DROP CONSTRAINT IF EXISTS idioma_fk CASCADE;
+ALTER TABLE public.libro ADD CONSTRAINT idioma_fk FOREIGN KEY ("Id_idioma")
+REFERENCES public.idioma ("Id") MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: "Editorial_fk" | type: CONSTRAINT --
--- ALTER TABLE public."Libro" DROP CONSTRAINT IF EXISTS "Editorial_fk" CASCADE;
-ALTER TABLE public."Libro" ADD CONSTRAINT "Editorial_fk" FOREIGN KEY ("Id_Editorial")
-REFERENCES public."Editorial" ("Id") MATCH FULL
+-- object: editorial_fk | type: CONSTRAINT --
+-- ALTER TABLE public.libro DROP CONSTRAINT IF EXISTS editorial_fk CASCADE;
+ALTER TABLE public.libro ADD CONSTRAINT editorial_fk FOREIGN KEY ("Id_editorial")
+REFERENCES public.editorial ("Id") MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: "Autor_fk" | type: CONSTRAINT --
--- ALTER TABLE public."Autor_Libro" DROP CONSTRAINT IF EXISTS "Autor_fk" CASCADE;
-ALTER TABLE public."Autor_Libro" ADD CONSTRAINT "Autor_fk" FOREIGN KEY ("Id_Autor")
-REFERENCES public."Autor" ("Id") MATCH FULL
+-- object: autor_fk | type: CONSTRAINT --
+-- ALTER TABLE public.autor_libro DROP CONSTRAINT IF EXISTS autor_fk CASCADE;
+ALTER TABLE public.autor_libro ADD CONSTRAINT autor_fk FOREIGN KEY ("Id_autor")
+REFERENCES public.autor ("Id") MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: "Libro_fk" | type: CONSTRAINT --
--- ALTER TABLE public."Autor_Libro" DROP CONSTRAINT IF EXISTS "Libro_fk" CASCADE;
-ALTER TABLE public."Autor_Libro" ADD CONSTRAINT "Libro_fk" FOREIGN KEY ("Id_Libro")
-REFERENCES public."Libro" ("Id") MATCH FULL
+-- object: libro_fk | type: CONSTRAINT --
+-- ALTER TABLE public.autor_libro DROP CONSTRAINT IF EXISTS libro_fk CASCADE;
+ALTER TABLE public.autor_libro ADD CONSTRAINT libro_fk FOREIGN KEY ("Id_libro")
+REFERENCES public.libro ("Id") MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
