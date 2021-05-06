@@ -1,4 +1,4 @@
-﻿id,titulo,fecha_publicación,num_páginas,ranking,num_votantes_libro,num_comentarios,Id_idioma,id_editorial
+﻿id,titulo,fecha_publicacion,num_paginas,ranking,num_votantes_libro,num_comentarios,Id_idioma,id_editorial
 1,Venac sonetnih venaca,1/1/1996,222,0,0,0,srp,5
 2,Mythographi Graeci 1: Apollodori Bibliotheca Apollodori epitoma Procli excerpta ex cycli epici carminibus Pediasmi libellus de duodecim Herculis...Graecorum et Romanorum Teubneriana,7/15/1998,335,0,0,0,grc,1085
 3,Out to Eat London 2002 (Lonely Planet Out to Eat),9/1/2001,295,0,0,0,eng,1190

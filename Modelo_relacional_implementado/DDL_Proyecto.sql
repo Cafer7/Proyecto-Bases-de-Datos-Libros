@@ -18,8 +18,8 @@
 CREATE TABLE public.libro (
 	"Id" serial NOT NULL,
 	titulo varchar,
-	"fecha_publicación" date,
-	"num_páginas" smallint,
+	fecha_publicacion date,
+	num_paginas smallint,
 	ranking double precision,
 	num_votantes_libro bigint,
 	num_comentarios bigint,
