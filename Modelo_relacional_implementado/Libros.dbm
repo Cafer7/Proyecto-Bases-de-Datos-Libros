@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.2" last-position="0,455" last-zoom="1" max-obj-count="6"
+<dbmodel pgmodeler-ver="0.9.2" last-position="0,556" last-zoom="1" max-obj-count="6"
 	 default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -15,7 +15,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="620" y="1060"/>
-	<column name="Id" not-null="true">
+	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
 	<column name="titulo">
@@ -37,12 +37,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="bigint" length="0"/>
 	</column>
 	<constraint name="Libro_pk" type="pk-constr" table="public.libro">
-		<columns names="Id" ref-type="src-columns"/>
+		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="Id_editorial" index="8"/>
 		<object name="Id_idioma" index="7"/>
+		<object name="id_editorial" index="8"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
@@ -55,14 +55,14 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1200" y="600"/>
-	<column name="Id" not-null="true">
+	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
 	<column name="nombre">
 		<type name="varchar" length="0"/>
 	</column>
 	<constraint name="Autor_pk" type="pk-constr" table="public.autor">
-		<columns names="Id" ref-type="src-columns"/>
+		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
@@ -72,8 +72,8 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<position x="640" y="620"/>
 
 	<customidxs object-type="column">
-		<object name="Id_autor" index="0"/>
-		<object name="Id_libro" index="1"/>
+		<object name="id_autor" index="0"/>
+		<object name="id_libro" index="1"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
@@ -86,14 +86,14 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1280" y="1240"/>
-	<column name="Id" not-null="true">
+	<column name="id" not-null="true">
 		<type name="serial" length="4"/>
 	</column>
 	<column name="nombre_editorial">
 		<type name="varchar" length="0"/>
 	</column>
 	<constraint name="Editorial_pk" type="pk-constr" table="public.editorial">
-		<columns names="Id" ref-type="src-columns"/>
+		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
@@ -101,14 +101,14 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="1280" y="980"/>
-	<column name="Id" not-null="true">
+	<column name="id" not-null="true">
 		<type name="char" length="4"/>
 	</column>
 	<column name="nombre_idioma">
 		<type name="char" length="20"/>
 	</column>
 	<constraint name="Idioma_pk" type="pk-constr" table="public.idioma">
-		<columns names="Id" ref-type="src-columns"/>
+		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
