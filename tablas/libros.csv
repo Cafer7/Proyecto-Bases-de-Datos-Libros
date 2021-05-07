@@ -1,4 +1,4 @@
-titulo,fecha_publicación,num_paginas,ranking,num_votantes_libro,num_comentarios,id_idioma,id_editorial
+titulo,fecha_publicacion,num_paginas,ranking,num_votantes_libro,num_comentarios,language_code,id_editorial
 Venac sonetnih venaca,1/1/1996,222,0,0,0,srp,5
 Mythographi Graeci 1: Apollodori Bibliotheca Apollodori epitoma Procli excerpta ex cycli epici carminibus Pediasmi libellus de duodecim Herculis...Graecorum et Romanorum Teubneriana,7/15/1998,335,0,0,0,grc,1085
 Out to Eat London 2002 (Lonely Planet Out to Eat),9/1/2001,295,0,0,0,eng,1190
@@ -5499,7 +5499,7 @@ Mon épouse américaine,4/19/2001,445,3.96,3,0,fre,1585
 Le Premier homme,2/11/2000,384,3.96,293,18,fre,771
 Dans les coulisses du musée,9/23/1998,410,3.96,45,4,fre,1135
 Les Saveurs de la vie,6/19/2003,893,3.96,6,1,fre,1585
-Montaillou village occitan de 1294 à 1324,6/31/1982,640,3.96,15,2,fre,737
+Montaillou village occitan de 1294 à 1324,6/30/1982,640,3.96,15,2,fre,737
 The Art of Nonfiction: A Guide for Writers and Readers,2/1/2001,192,3.96,429,39,eng,1349
 Emergence: The Connected Lives of Ants Brains Cities and Software,9/10/2002,288,3.96,2769,200,eng,1800
 Behind Closed Doors: Secrets of Great Management,9/26/2005,176,3.96,840,63,eng,1612
@@ -7897,7 +7897,7 @@ The Secret History,4/13/2004,559,4.1,234929,15790,eng,2139
 Sharpe's Fury (Sharpe #11),8/22/2006,352,4.1,6057,136,eng,879
 Demon Diary Volume 04,11/4/2003,192,4.1,1182,15,eng,2015
 Divine By Choice (Partholon #2),11/21/2006,377,4.1,6435,209,eng,1210
-In Pursuit of the Proper Sinner (Inspector Lynley #10),11/31/2000,718,4.1,10608,295,eng,196
+In Pursuit of the Proper Sinner (Inspector Lynley #10),11/30/2000,718,4.1,10608,295,eng,196
 Practical Philosophy,12/8/1999,704,4.1,288,3,eng,353
 Three Books of Occult Philosophy,1/8/1992,1024,4.1,1245,28,eng,1181
 Venetia,10/24/2006,364,4.1,10067,789,eng,1012
