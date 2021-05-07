@@ -17,5 +17,14 @@ select * from autor
 select * from idioma
 select * from libro
 delete from autor
->>>>>>> 3263d3a97f3173be396ba8b90275798908db7bca
+select * from editorial
+
+ALTER SEQUENCE autor_id_seq RESTART WITH 1
+ALTER SEQUENCE editorial_id_seq RESTART WITH 1
+ALTER SEQUENCE libro_id_seq RESTART WITH 1
+ALTER SEQUENCE autor_id_seq RESTART WITH 1
+
+
+
+
 
