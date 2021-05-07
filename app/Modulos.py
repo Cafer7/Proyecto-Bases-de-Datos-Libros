@@ -9,7 +9,7 @@ class Connection:
         self.connection = None
     def openConnection(self):
         try:
-            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
+            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto-libros",user="postgres",password="linux123")
         except Exception as e:
             print (e)
 
@@ -30,3 +30,11 @@ def leer_tabla_idioma():
 
 def leer_tabla_editorial():
     return "SELECT * FROM editorial"
+
+def obtener_libros_con_max_pag_idioma():
+    return  """select max_pag.titulo, idioma.nombre_idioma, max_pag.num_paginas from
+                idioma join
+                (select id, titulo, id_idioma, num_paginas from libro
+                where (id_idioma, num_paginas) in
+                (select id_idioma, max(num_paginas) from libro
+                group by id_idioma)) max_pag on (idioma.id = max_pag.id_idioma)"""
