@@ -23,7 +23,7 @@ CREATE TABLE public.libro (
 	ranking double precision,
 	num_votantes_libro bigint,
 	num_comentarios bigint,
-	"Id_idioma" char(4) NOT NULL,
+	id_idioma char(4) NOT NULL,
 	id_editorial integer NOT NULL,
 	CONSTRAINT "Libro_pk" PRIMARY KEY (id)
 
@@ -80,7 +80,7 @@ CREATE TABLE public.idioma (
 
 -- object: idioma_fk | type: CONSTRAINT --
 -- ALTER TABLE public.libro DROP CONSTRAINT IF EXISTS idioma_fk CASCADE;
-ALTER TABLE public.libro ADD CONSTRAINT idioma_fk FOREIGN KEY ("Id_idioma")
+ALTER TABLE public.libro ADD CONSTRAINT idioma_fk FOREIGN KEY (id_idioma)
 REFERENCES public.idioma (id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
