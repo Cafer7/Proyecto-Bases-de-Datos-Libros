@@ -10,21 +10,23 @@ Copy autor_libro from 'libro_autor.csv' delimiter ',' CSV HEADER;
 Copy autor(nombre) from 'C:\Sobrecarga Postgres\autor.csv' delimiter ',' CSV HEADER;
 Copy editorial(nombre_editorial) from 'C:\Sobrecarga Postgres\editoriales.csv' delimiter ',' encoding 'UTF-8' CSV HEADER;
 Copy idioma from 'C:\Sobrecarga Postgres\idioma.csv' delimiter ',' encoding 'UTF-8' CSV HEADER;
-Copy libro(titulo, fecha_publicacion, num_paginas, ranking, num_votantes_libro, num_comentarios, Id_idioma,Id_editorial) from 'C:\Sobrecarga Postgres\librosss.csv' delimiter ',' encoding 'UTF-8' CSV HEADER;
+Copy libro(titulo, fecha_publicacion, num_paginas, ranking, num_votantes_libro, num_comentarios, id_idioma,id_editorial) from 'C:\Sobrecarga Postgres\libros.csv' delimiter ',' encoding 'UTF-8' CSV HEADER;
 Copy autor_libro from 'C:\Sobrecarga Postgres\libro_autor.csv' delimiter ',' encoding 'UTF-8' CSV HEADER;
 
 select * from autor
 select * from idioma
-select * from libro
-delete from autor
+select * from libro 
 select * from editorial
-
-ALTER SEQUENCE autor_id_seq RESTART WITH 1
-ALTER SEQUENCE editorial_id_seq RESTART WITH 1
-ALTER SEQUENCE libro_id_seq RESTART WITH 1
-ALTER SEQUENCE autor_id_seq RESTART WITH 1
+select * from autor_libro
 
 
+ALTER SEQUENCE autor_id_seq RESTART WITH 1;
+ALTER SEQUENCE editorial_id_seq RESTART WITH 1;
+ALTER SEQUENCE libro_id_seq RESTART WITH 1;
+
+
+delete from libro
+drop cascade table libro
 
 
 
