@@ -46,11 +46,11 @@ df_tabla_pa_num_pa = pd.DataFrame(tabla_pa_num_pa)
 
 ###############################################################################
 #consultas a las tablas
-print(df_tabla_libro)
+# print(df_tabla_libro)
 print(df_tabla_autor)
-print(df_tabla_editorial)
-print(df_tabla_autor_libro)
-print(df_tabla_idioma)
+# print(df_tabla_editorial)
+# print(df_tabla_autor_libro)
+# print(df_tabla_idioma)
 
 print(df_tabla_pa_num_pa)
 ###############################################################################
