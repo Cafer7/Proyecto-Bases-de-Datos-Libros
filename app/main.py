@@ -18,40 +18,7 @@ df_tabla_autor = pd.DataFrame(tabla_autor, columns=["id", "nombre"])
 df_tabla_autor_libro = pd.DataFrame(tabla_autor_libro, columns=["id_autor","id_libro"])
 df_tabla_idioma = pd.DataFrame(tabla_idioma, columns=["id","nombre_idioma"])
 df_tabla_editorial = pd.DataFrame(tabla_editorial, columns=["id","nombre_editorial"])
-
 df_tabla_pa_num_pa = pd.DataFrame(tabla_pa_num_pa)
-################################################################################
-#Creando diagramas de barras y mapas
-#Que país publica más libros
-
-# figBarCases = px.bar(df_tabla_libro.head(20), x="country", y="amount")
-# figMapCases = px.choropleth(df_tabla_libro, locations="country",
-# locationmode="country names",
-# color="amount",
-# hover_name="country",
-# color_continuous_scale=["#99ccff", "#ff3333"])
-#
-# figBarCases = px.bar(df_tabla_autor.head(20), x="country", y="amount")
-#
-# figBarCases = px.bar(df_tabla_autor_libro.head(20), x="country", y="amount")
-#
-# figBarCases = px.bar(df_tabla_idioma.head(20), x="country", y="amount")
-#
-# figBarCases = px.bar(df_tabla_editorial.head(20), x="country", y="amount")
-
-
-###############################################################################
-
-###############################################################################
-#consultas a las tablas
-# print(df_tabla_libro)
-#print(df_tabla_autor)
-# print(df_tabla_editorial)
-# print(df_tabla_autor_libro)
-# print(df_tabla_idioma)
-
-#print(df_tabla_pa_num_pa)
-###############################################################################
 
  #Rating y numero de votantes para saber cuales son los lbros más populares
 
@@ -67,39 +34,120 @@ dfLibros_10mvotados_1000votos = pd.DataFrame(query, columns=["titulo", "ranking"
 print(dfLibros_10mvotados)
 figBarLibros_10mvotados_1000votos = px.bar(dfLibros_10mvotados_1000votos.head(20), x="titulo", y="ranking")
 
-
 #10 libros diez_mas_comentados
-print("sdjkgfjasdfhlsdjfjlsdhfjlsdhfjksdhfljsdhfjkdshljkdhlfkjdsjfkdsjkflasdlfjkhdsjklfhdsjkfhdasjhdflsjh")
-query = pd.read_sql_query(diez_mas_populares_ranking(), con.connection)
+query = pd.read_sql_query(diez_mas_comentados(), con.connection)
 dfdiez_mas_comentados = pd.DataFrame(query, columns=["titulo", "num_comentarios"])
 print(dfdiez_mas_comentados)
 figBardiez_mas_comentados = px.bar(dfdiez_mas_comentados.head(20), x="titulo", y="num_comentarios")
 
- #Mejores editoriales por califacion de los libros.
+ #Mejores editoriales por calificacion de los libros.
 
 query = pd.read_sql_query(mejores_editoriales(), con.connection)
 dfMejores_editoriales = pd.DataFrame(query, columns=["nombre_editorial", "ranking"])
 print(dfMejores_editoriales)
 figBarMejores_editoriales = px.bar(dfMejores_editoriales.head(20), x="nombre_editorial", y="ranking")
 
-
- #Editoriales más prolifereas
+ #Editoriales más prolifereas por votos
 
 query = pd.read_sql_query(mas_proliferas_por_votos(), con.connection)
-dfEditoriales_proliferas = pd.DataFrame(query, columns=["nombre_editorial", "num_votantes"])
-print(dfEditoriales_proliferas)
-figBarEditoriales_proliferas= px.bar(dfEditoriales_proliferas.head(20), x="nombre_editorial", y="num_votantes")
+dfEditoriales_proliferasvotos = pd.DataFrame(query, columns=["nombre_editorial", "num_votantes"])
+print(dfEditoriales_proliferasvotos)
+figBarEditoriales_proliferasvotos= px.bar(dfEditoriales_proliferasvotos.head(20), x="nombre_editorial", y="num_votantes")
 
+#Editoriales mas proliferas por comentarios
 
+query = pd.read_sql_query(mas_proliferas_por_comentarios(), con.connection)
+dfEditoriales_proliferascomentarios = pd.DataFrame(query, columns=["nombre_editorial", "numero_comentarios"])
+print(dfEditoriales_proliferascomentarios)
+figBarEditoriales_proliferascomentarios= px.bar(dfEditoriales_proliferascomentarios.head(20), x="nombre_editorial", y="numero_comentarios")
 
+#Mejores autores por calificacion
 
+query = pd.read_sql_query(mejores_autores_por_calificacion(), con.connection)
+dfmejores_autores_por_calificacion = pd.DataFrame(query, columns=["nombre", "ranking_autor"])
+print(dfmejores_autores_por_calificacion)
+figBarmejores_autores_por_calificacion= px.bar(dfmejores_autores_por_calificacion.head(20), x="nombre", y="ranking_autor")
 
+#Autores mas famosos por comentarios
 
+query = pd.read_sql_query(autores_mas_famosos_comentarios(), con.connection)
+dfautores_mas_famosos_comentarios = pd.DataFrame(query, columns=["nombre", "comentarios"])
+print(dfautores_mas_famosos_comentarios)
+figBarautores_mas_famosos_comentarios= px.bar(dfautores_mas_famosos_comentarios.head(20), x="nombre", y="comentarios")
 
- #Mejores autores
+#Autores mas famosos por numero de votantes
 
-
-
-
+query = pd.read_sql_query(autores_mas_famosos_por_num_votantes(), con.connection)
+dfautores_mas_famosos_por_num_votantes = pd.DataFrame(query, columns=["nombre", "num_votantes"])
+print(dfautores_mas_famosos_por_num_votantes)
+figBarautores_mas_famosos_por_num_votantes= px.bar(dfautores_mas_famosos_por_num_votantes.head(20), x="nombre", y="num_votantes")
 
 con.closeConnection()
+ALLOWED_TYPES = (
+    "search"
+)
+
+external_stylesheets = ["https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"]
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+#Layout
+app.layout = html.Div(children=[
+    html.H1(children = "titulo op", className = "text-center"),
+    html.Div(children=[
+       dcc.Input(
+           id="input_{}".format("search"),
+           type="search",
+           placeholder="input type {}".format("search"),
+       )
+
+    ,html.Div(id="out-all-types")
+    ]),
+    html.Div(className="container-fluid", children=[
+        #fila 1
+        html.Div(className="row", children=[
+        #columna1
+            html.Div(className="col-12 col-xl-6", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="10Libros+Votados"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="10Libros+Votados",
+                            figure = figBarLibros_10mvotados
+                        ),
+                    ]),
+                ]),
+            ])
+            #columna2
+            # html.Div(className="col-12 col-xl-6", children=[
+            #     html.Div(className="card", children=[
+            #         html.Div(className="card-header", children=[
+            #             html.H3(children="10Libros+Votados"),
+            #         ]),
+            #         html.Div(className="card-body", children=[
+            #             dcc.Graph(
+            #                 id="10Libros+Rankin",
+            #                 figure = figBarLibros_10mvotados_1000votos
+            #             ),
+            #         ]),
+            #     ]),
+            # ])
+        ]),
+    ]),
+])
+
+
+
+@app.callback(
+   Output("out-all-types", "children"),
+   Input("input_{}".format("search"), "value"),
+)
+
+def cb_render(*val):
+   con.openConnection()
+   query = pd.read_sql_query(buscar_libro_por_titulo(val), con.connection)
+   return val
+
+if __name__ == "__main__":
+    app.run_server(debug=True)

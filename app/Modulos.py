@@ -2,6 +2,7 @@ import psycopg2
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 class Connection:
@@ -63,19 +64,15 @@ def diez_mas_comentados():
             LIMIT 10;"""
 
 def mejores_editoriales():
-    return   """select distinct nombre_editorial, AVG(ranking) as ranking
-                from (select h.nombre_editorial, h.ranking
-                  from(
-                	  (Select *
-                	   from(Select nombre_editorial, count(Distinct l.id)::real as num
-                  			From libro l JOIN editorial e ON(l.id_editorial = e.id)
-                    		Group by nombre_editorial) as a
-                			Where a.num > 10) as m NATURAL JOIN (libro l join editorial e on(l.id_editorial = e.id)) as j
-                  	) as h
-                  ) as s
-                group by nombre_editorial
-                order by ranking Desc
-                Limit 10"""
+    return   """SELECT nombre_editorial, ranking FROM (SELECT * FROM editorial NATURAL JOIN (SELECT nombre_editorial FROM (
+                	SELECT COUNT(ed.id) as cuenta, ed.nombre_editorial
+                	FROM libro lib JOIN editorial ed ON(ed.id = lib.id_editorial)
+                	GROUP BY ed.nombre_editorial) h
+                WHERE cuenta > 10) ld) edi NATURAL JOIN (SELECT nombre_editorial, AVG(ranking)::real as ranking
+                FROM (SELECT * FROM libro WHERE ranking > 0) l JOIN editorial e ON(l.id_editorial = e.id)
+                GROUP BY nombre_editorial
+                ORDER BY ranking DESC) ld
+                LIMIT 10"""
 
 def mas_proliferas_por_votos():
     return  """SELECT DISTINCT id_editorial, titulo, nombre_editorial, SUM(num_votantes_libro) as num_votantes
@@ -114,5 +111,5 @@ def autores_mas_famosos_por_num_votantes():
 
 def buscar_libro_por_titulo(frase):
     return """select distinct titulo from libro
-              where titulo like '{0}%';
+              where titulo like '{0}%' limit 10;
            """.format(frase)
