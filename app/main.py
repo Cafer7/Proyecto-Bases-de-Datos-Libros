@@ -54,3 +54,12 @@ print(df_tabla_autor)
 
 print(df_tabla_pa_num_pa)
 ###############################################################################
+ #Rating y numero de votantes para saber cuales son los lbros más populares
+
+ #Mejores editoriales por califacion de los libros.
+
+ #Editoriales más prolifereas
+
+ #Mejores autores
+
+ 

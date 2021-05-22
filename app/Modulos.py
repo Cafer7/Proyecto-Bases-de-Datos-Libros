@@ -38,3 +38,8 @@ def obtener_libros_con_max_pag_idioma():
                 where (id_idioma, num_paginas) in
                 (select id_idioma, max(num_paginas) from libro
                 group by id_idioma)) max_pag on (idioma.id = max_pag.id_idioma)"""
+
+def buscar_libro_por_titulo(frase):
+    return """select distinct titulo from libro
+              where titulo like '{0}%';
+           """.format(frase)
