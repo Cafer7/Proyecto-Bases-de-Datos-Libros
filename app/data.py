@@ -46,7 +46,13 @@ app.layout = html.Div(children=[
         crear_fila_columna_fig(
             titulo1="Mejores Autores Por Votantes",
             fig1=figBarautores_mas_famosos_por_num_votantes,
-            id1="mejoresautoresporvotantes"
+            id1="mejoresautoresporvotantes",
+        ),
+        #fila 6
+        crear_fila_columna_fig(
+        titulo2="pie de manzana",
+        fig2=fignumero_libros_por_idiomas,
+        id2="piedemanzana"
         )
     ]),
 ])

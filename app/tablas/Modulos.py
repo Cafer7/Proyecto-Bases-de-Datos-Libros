@@ -95,3 +95,8 @@ def buscar_libro_por_titulo(frase):
               where LOWER(titulo) like '{0}%'
               order by titulo limit 5;
            """.format(frase)
+
+def cantidad_libros_por_idioma():
+    return """select i.nombre_idioma as idioma, count(titulo) as total
+              from libro l INNER JOIN idioma i ON l.id_idioma = i.id
+              Group by i.nombre_idioma"""

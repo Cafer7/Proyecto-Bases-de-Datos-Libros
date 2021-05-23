@@ -13,7 +13,7 @@ class Connection:
         self.connection = None
     def openConnection(self):
         try:
-            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="linux123")
+            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
         except Exception as e:
             print (e)
 
@@ -91,7 +91,16 @@ figBarautores_mas_famosos_comentarios= px.bar(dfautores_mas_famosos_comentarios.
 
 query = pd.read_sql_query(autores_mas_famosos_por_num_votantes(), con.connection)
 dfautores_mas_famosos_por_num_votantes = pd.DataFrame(query, columns=["nombre", "num_votantes"])
-figBarautores_mas_famosos_por_num_votantes= px.bar(dfautores_mas_famosos_por_num_votantes.head(20), x="nombre", y="num_votantes")
+figBarautores_mas_famosos_por_num_votantes= px.scatter(dfautores_mas_famosos_por_num_votantes.head(20), x="nombre", y="num_votantes")
+#para crear scatterplot
+# fig = px.scatter(df.query("year==2007"), x="gdpPercap", y="lifeExp",
+# 	         size="pop", color="continent",
+#                  hover_name="country", log_x=True, size_max=60)
+# numero de Libros por idioma
+query = pd.read_sql_query(cantidad_libros_por_idioma(), con.connection)
+dfnumero_libros_por_idiomas = pd.DataFrame(query, columns=["idioma", "total"])
+fignumero_libros_por_idiomas= px.pie(dfnumero_libros_por_idiomas.head(20), values="total", names="idioma", title = "Pie de manzana").update_traces(textposition='inside', textinfo='percent+label')
+
 
 con.closeConnection()
 
@@ -127,7 +136,7 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                 ])
     elif (titulo1 != None and titulo2 == None):
         return  html.Div(className="row", children=[
-                    html.Div(className="col-12 col-xl-6", children=[
+                    html.Div(className="col-12", children=[
                         html.Div(className="card border-info", children=[
                             html.Div(className="card-header bg-info text-light", children=[
                                 html.H3(children= titulo1),
@@ -142,8 +151,8 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                     ]),
                 ])
     elif (titulo2 != None and titulo1 == None):
-        return  html.Div(className="row", children=[
-                    html.Div(className="col-12 col-xl-6", children=[
+        return  html.Div(className="row", style=list("width":"200px"), children=[
+                    html.Div(className="col-12", children=[
                         html.Div(className="card border-info", children=[
                             html.Div(className="card-header bg-info text-light", children=[
                                 html.H3(children= titulo2),
