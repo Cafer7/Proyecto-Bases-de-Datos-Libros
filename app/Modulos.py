@@ -110,6 +110,6 @@ def autores_mas_famosos_por_num_votantes():
             ORDER BY num_votantes DESC LIMIT 10"""
 
 def buscar_libro_por_titulo(frase):
-    return """select distinct titulo from libro
+    return """select distinct * from libro
               where titulo like '{0}%' limit 10;
            """.format(frase)

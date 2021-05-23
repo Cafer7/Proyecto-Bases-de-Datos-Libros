@@ -93,15 +93,6 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 #Layout
 app.layout = html.Div(children=[
     html.H1(children = "titulo op", className = "text-center"),
-    html.Div(children=[
-       dcc.Input(
-           id="input_{}".format("search"),
-           type="search",
-           placeholder="input type {}".format("search"),
-       )
-
-    ,html.Div(id="out-all-types")
-    ]),
     html.Div(className="container-fluid", children=[
         #fila 1
         html.Div(className="row", children=[
@@ -114,40 +105,138 @@ app.layout = html.Div(children=[
                     html.Div(className="card-body", children=[
                         dcc.Graph(
                             id="10Libros+Votados",
-                            figure = figBarLibros_10mvotados
+                            figure  = figBarLibros_10mvotados
                         ),
                     ]),
                 ]),
-            ])
-            #columna2
-            # html.Div(className="col-12 col-xl-6", children=[
-            #     html.Div(className="card", children=[
-            #         html.Div(className="card-header", children=[
-            #             html.H3(children="10Libros+Votados"),
-            #         ]),
-            #         html.Div(className="card-body", children=[
-            #             dcc.Graph(
-            #                 id="10Libros+Rankin",
-            #                 figure = figBarLibros_10mvotados_1000votos
-            #             ),
-            #         ]),
-            #     ]),
-            # ])
+            ]),
+            # columna2
+            html.Div(className="col-12 col-xl-5", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="10Libros+Rankeados"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="10Libros+Ranking",
+                            figure = figBarLibros_10mvotados_1000votos
+                        ),
+                    ]),
+                ]),
+            ]),
+        ]),
+        #Fila2
+        html.Div(className="row", children=[
+        #columna1
+            html.Div(className="col-12 col-xl-6", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="10Libros+comentados"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="10Libros+comentados",
+                            figure  = figBardiez_mas_comentados
+                        ),
+                    ]),
+                ]),
+            ]),
+            # columna2
+            html.Div(className="col-12 col-xl-5", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="10Mejoreseditoriales"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="10Mejoreseditoriales",
+                            figure = figBarMejores_editoriales
+                        ),
+                    ]),
+                ]),
+            ]),
+        ]),
+        #Fila3
+        html.Div(className="row", children=[
+            #columna1
+            html.Div(className="col-12 col-xl-6", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="Editoriales_pvotos"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="Editoriales_pvotos",
+                            figure  = figBarEditoriales_proliferasvotos
+                        ),
+                    ]),
+                ]),
+            ]),
+            # columna2
+            html.Div(className="col-12 col-xl-5", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="Editoriales_pcoments"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="Editoriales_pcoments",
+                            figure = figBarEditoriales_proliferascomentarios
+                        ),
+                    ]),
+                ]),
+            ]),
+        ]),
+        #Fila4
+        html.Div(className="row", children=[
+        #columna1
+            html.Div(className="col-12 col-xl-6", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="mejoresautoresporcalificacion"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="mejoresautoresporcalificacion",
+                            figure  = figBarmejores_autores_por_calificacion
+                        ),
+                    ]),
+                ]),
+            ]),
+            # columna2
+            html.Div(className="col-12 col-xl-5", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="Autoresfamososcomentarios"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="Autoresfamososcomentarios",
+                            figure = figBarautores_mas_famosos_comentarios
+                        ),
+                    ]),
+                ]),
+            ]),
+        ]),
+        #Fila5
+        html.Div(className="row", children=[
+        #columna1
+            html.Div(className="col-12 col-xl-6", children=[
+                html.Div(className="card border-info", children=[
+                    html.Div(className="card-header bg-info text-light", children=[
+                        html.H3(children="mejoresautoresporvotantes"),
+                    ]),
+                    html.Div(className="card-body", children=[
+                        dcc.Graph(
+                            id="mejoresautoresporvotantes",
+                            figure  = figBarautores_mas_famosos_por_num_votantes
+                        ),
+                    ]),
+                ]),
+            ]),
         ]),
     ]),
 ])
-
-
-
-@app.callback(
-   Output("out-all-types", "children"),
-   Input("input_{}".format("search"), "value"),
-)
-
-def cb_render(*val):
-   con.openConnection()
-   query = pd.read_sql_query(buscar_libro_por_titulo(val), con.connection)
-   return val
 
 if __name__ == "__main__":
     app.run_server(debug=True)
