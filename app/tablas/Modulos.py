@@ -1,22 +1,3 @@
-import psycopg2
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
-import plotly.express as px
-import pandas as pd
-class Connection:
-    def __init__(self):
-        self.connection = None
-    def openConnection(self):
-        try:
-            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
-        except Exception as e:
-            print (e)
-
-    def closeConnection(self):
-        self.connection.close()
-
 def leer_tabla_autor():
     return "SELECT * FROM autor"
 
@@ -110,6 +91,7 @@ def autores_mas_famosos_por_num_votantes():
             ORDER BY num_votantes DESC LIMIT 10"""
 
 def buscar_libro_por_titulo(frase):
-    return """select distinct * from libro
-              where titulo like '{0}%' limit 10;
+    return """select distinct titulo from libro
+              where LOWER(titulo) like '{0}%'
+              order by titulo limit 5;
            """.format(frase)
