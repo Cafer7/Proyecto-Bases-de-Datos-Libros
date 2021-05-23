@@ -13,7 +13,7 @@ class Connection:
         self.connection = None
     def openConnection(self):
         try:
-            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
+            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="linux123")
         except Exception as e:
             print (e)
 
@@ -114,6 +114,7 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                             ]),
                             html.Div(className="card-body", children=[
                                 dcc.Graph(
+                                    style={'color': 'green', 'fontSize': 14, 'height':'500px'},
                                     id=id1,
                                     figure  = fig1
                                 ),
@@ -127,6 +128,7 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                             ]),
                             html.Div(className="card-body", children=[
                                 dcc.Graph(
+                                    style={'color': 'green', 'fontSize': 14, 'height':'500px'},
                                     id=id2,
                                     figure  = fig2
                                 ),
@@ -143,6 +145,7 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                             ]),
                             html.Div(className="card-body", children=[
                                 dcc.Graph(
+                                    style={'color': 'green', 'fontSize': 14, 'height':'500px'},
                                     id=id1,
                                     figure  = fig1
                                 ),
@@ -151,20 +154,23 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                     ]),
                 ])
     elif (titulo2 != None and titulo1 == None):
-        return  html.Div(className="row", style=list("width":"200px"), children=[
+        return  html.Div(className="row", children=[
                     html.Div(className="col-12", children=[
                         html.Div(className="card border-info", children=[
                             html.Div(className="card-header bg-info text-light", children=[
                                 html.H3(children= titulo2),
                             ]),
-                            html.Div(className="card-body", children=[
+                            html.Div(
+                                className="card-body", 
+                                children=[
                                 dcc.Graph(
+                                    style={'color': 'green', 'fontSize': 14, 'height':'500px'},
                                     id=id2,
                                     figure  = fig2
                                 ),
                             ]),
                         ]),
                     ]),
-                ])
+                ],)
     else:
         return html.H1("Uoops, error")

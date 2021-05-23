@@ -6,7 +6,7 @@ def app_bar():
                     html.Div(
                         html.H1(children = "titulo op", className = "text-center"),
                     ),
-                    width=9
+                    width=2
                 ),
                 dbc.Col(
                     html.Div(
@@ -18,7 +18,7 @@ def app_bar():
                             ),
                         ),
                     ),
-                    width=2
+                    width=3
                 ),
             ],
             justify="between",
