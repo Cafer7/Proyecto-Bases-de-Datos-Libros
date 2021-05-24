@@ -36,7 +36,7 @@ class Connection:
 #Conexión a la base de datos
 user = input("Ingrese usuario: \n")
 password = getpass.getpass("Ingrese su clave:\n")
-port = input("Ingrese el puuerto: \n")
+port = input("Ingrese el puerto: \n")
 con = Connection(user,password,port)
 con.openConnection()
 print("Creando Tablas...")
