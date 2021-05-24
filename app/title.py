@@ -4,7 +4,7 @@ def app_bar():
             [
                 dbc.Col(
                     html.Div(
-                        html.H1(children = "titulo op", className = "text-center"),
+                        html.H1(children = "Análisis de Goodreads", className = "text-center"),
                     ),
                     width=2
                 ),

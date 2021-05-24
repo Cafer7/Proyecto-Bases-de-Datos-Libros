@@ -8,49 +8,49 @@ app.layout = html.Div(children=[
     html.Div(className="container-fluid", children=[
         #fila 1
         crear_fila_columna_fig(
-            titulo1="10Libros+Votados",
+            titulo1="10 Libros mas votados",
             fig1=figBarLibros_10mvotados,
             id1="10Libros+Votados",
-            titulo2="10Libros+Rankeados",
+            titulo2="10 Libros mejor Rankeados",
             fig2=figBarLibros_10mvotados_1000votos,
             id2="10Libros+Rankeados"
         ),
         #Fila2
         crear_fila_columna_fig(
-            titulo1="10Libros+comentados",
+            titulo1="10 Libros mas comentados",
             fig1=figBardiez_mas_comentados,
             id1="10Libros+comentados",
-            titulo2="10Mejoreseditoriales",
-            fig2=figBarMejores_editoriales,
+            titulo2="10 Mejores editoriales por ranking",
+            fig2=figBarmejores_editoriales_por_ranking,
             id2="10Mejoreseditoriales"
         ),
         #Fila3
         crear_fila_columna_fig(
-            titulo1="Editoriales_pvotos",
+            titulo1="Mejores editoriales por votos",
             fig1=figBarEditoriales_proliferasvotos,
             id1="Editoriales_pvotos",
-            titulo2="Editoriales_pcoments",
+            titulo2="Mejores editoriales por comentarios",
             fig2=figBarEditoriales_proliferascomentarios,
             id2="Editoriales_pcoments"
         ),
         #Fila4
         crear_fila_columna_fig(
-            titulo1="Autoresfamososcomentarios",
+            titulo1="Autores famosos segun el numero de comentarios",
             fig1=figBarautores_mas_famosos_comentarios,
             id1="Autoresfamososcomentarios",
-            titulo2="mejoresautoresporcalificacion",
+            titulo2="Mejores autores segun la calificacion de sus libros",
             fig2=figBarmejores_autores_por_calificacion,
             id2="mejoresautoresporcalificacion"
         ),
         #Fila5
         crear_fila_columna_fig(
-            titulo1="Mejores Autores Por Votantes",
+            titulo1="Autores mas famosos por votantes de sus libros",
             fig1=figBarautores_mas_famosos_por_num_votantes,
             id1="mejoresautoresporvotantes",
         ),
         #fila 6
         crear_fila_columna_fig(
-        titulo2="pie de manzana",
+        titulo2="Porcentaje de idiomas en la base de datos",
         fig2=fignumero_libros_por_idiomas,
         id2="piedemanzana"
         )

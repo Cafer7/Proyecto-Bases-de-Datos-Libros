@@ -44,7 +44,7 @@ def diez_mas_comentados():
             ORDER BY num_comentarios DESC
             LIMIT 10;"""
 
-def mejores_editoriales():
+def mejores_editoriales_por_ranking():
     return   """SELECT nombre_editorial, ranking FROM (SELECT * FROM editorial NATURAL JOIN (SELECT nombre_editorial FROM (
                 	SELECT COUNT(ed.id) as cuenta, ed.nombre_editorial
                 	FROM libro lib JOIN editorial ed ON(ed.id = lib.id_editorial)
@@ -92,7 +92,7 @@ def autores_mas_famosos_por_num_votantes():
 
 def buscar_libro_por_titulo(frase):
     return """SELECT lr.titulo as Libro, aut.nombre as Autor
-                FROM (libro JOIN autor_libro ON autor_libro.id_libro = libro.id) lr 
+                FROM (libro JOIN autor_libro ON autor_libro.id_libro = libro.id) lr
                     JOIN autor aut ON aut.id = lr.id_autor
                 WHERE LOWER(titulo) like '{0}%'
                 ORDER BY Libro LIMIT 10;

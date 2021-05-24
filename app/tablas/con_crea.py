@@ -13,7 +13,7 @@ class Connection:
         self.connection = None
     def openConnection(self):
         try:
-            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="linux123")
+            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
         except Exception as e:
             print (e)
 
@@ -59,9 +59,9 @@ figBardiez_mas_comentados = px.bar(dfdiez_mas_comentados.head(20), x="titulo", y
 
  #Mejores editoriales por calificacion de los libros.
 
-query = pd.read_sql_query(mejores_editoriales(), con.connection)
-dfMejores_editoriales = pd.DataFrame(query, columns=["nombre_editorial", "ranking"])
-figBarMejores_editoriales = px.bar(dfMejores_editoriales.head(20), x="nombre_editorial", y="ranking")
+query = pd.read_sql_query(mejores_editoriales_por_ranking(), con.connection)
+dfmejores_editoriales_por_ranking = pd.DataFrame(query, columns=["nombre_editorial", "ranking"])
+figBarmejores_editoriales_por_ranking  = px.bar(dfmejores_editoriales_por_ranking .head(20), x="nombre_editorial", y="ranking")
 
  #Editoriales más prolifereas por votos
 
@@ -99,7 +99,7 @@ figBarautores_mas_famosos_por_num_votantes= px.scatter(dfautores_mas_famosos_por
 # numero de Libros por idioma
 query = pd.read_sql_query(cantidad_libros_por_idioma(), con.connection)
 dfnumero_libros_por_idiomas = pd.DataFrame(query, columns=["idioma", "total"])
-fignumero_libros_por_idiomas= px.pie(dfnumero_libros_por_idiomas.head(20), values="total", names="idioma", title = "Pie de manzana").update_traces(textposition='inside', textinfo='percent+label')
+fignumero_libros_por_idiomas= px.pie(dfnumero_libros_por_idiomas.head(20), values="total", names="idioma").update_traces(textposition='inside', textinfo='percent+label')
 
 
 con.closeConnection()
@@ -161,7 +161,7 @@ def crear_fila_columna_fig(titulo1 = None, fig1 = None, id1 = None, titulo2 = No
                                 html.H3(children= titulo2),
                             ]),
                             html.Div(
-                                className="card-body", 
+                                className="card-body",
                                 children=[
                                 dcc.Graph(
                                     style={'color': 'green', 'fontSize': 14, 'height':'500px'},
