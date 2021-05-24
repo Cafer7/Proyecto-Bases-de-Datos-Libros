@@ -57,11 +57,12 @@ app.layout = html.Div(children=[
     ]),
 ])
 
+#Se actualiza el html cada vez que se ingresa un valor en la barra de busqueda
 @app.callback(
     Output("Container", "children"),
     Input("input_search", "value"),
 )
-
+#Se ejecuta la sentencia segun lo que este en la barra de busqueda
 def cb_render(*vals):
     if vals[0] != None and vals[0] != "":
         busquedas = []
@@ -72,6 +73,5 @@ def cb_render(*vals):
         table = dbc.Table.from_dataframe(df_busqueda, striped=True, bordered=True, hover=False)
         busquedas = df_busqueda.astype(str).values.tolist()
         return table
-        # return html.Ul(children=[html.Li(i) for i in busquedas])
     else:
         return [""]
