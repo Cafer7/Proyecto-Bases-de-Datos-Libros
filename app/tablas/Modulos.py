@@ -91,11 +91,9 @@ def autores_mas_famosos_por_num_votantes():
             ORDER BY num_votantes DESC LIMIT 10"""
 
 def buscar_libro_por_titulo(frase):
-    return """SELECT lr.titulo as Libro, aut.nombre as Autor
-                FROM (libro JOIN autor_libro ON autor_libro.id_libro = libro.id) lr
-                    JOIN autor aut ON aut.id = lr.id_autor
-                WHERE LOWER(titulo) like '{0}%'
-                ORDER BY Libro LIMIT 10;
+    return """SELECT DISTINCT titulo as "Libro", num_paginas as "Numero de paginas" FROM libro
+              where LOWER(titulo) like '{0}%'
+              order by titulo limit 5;
            """.format(frase)
 
 def cantidad_libros_por_idioma():

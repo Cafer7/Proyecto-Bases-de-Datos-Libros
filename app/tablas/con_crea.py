@@ -1,4 +1,5 @@
 from .Modulos import *
+import getpass
 import psycopg2
 import dash
 import dash_core_components as dcc
@@ -9,21 +10,27 @@ import plotly.express as px
 import pandas as pd
 
 class Connection:
-    def __init__(self):
+    def __init__(self, usuario="postgres", contra="linux123", puerto="5432"):
+        self.user = usuario
+        self.password = contra
+        self.port = puerto
         self.connection = None
     def openConnection(self):
         try:
-            self.connection = psycopg2.connect(host="localhost",port="5432",dbname="proyecto",user="postgres",password="031101")
+            self.connection = psycopg2.connect(host="localhost",port=self.port,dbname="proyecto",user=self.user,password=self.password)
         except Exception as e:
             print (e)
 
     def closeConnection(self):
         self.connection.close()
-print("Creando Tablas...")
 ###############################################################################
 #Conexión a la base de datos
+user = input("Ingrese usuario: \n")
+password = getpass.getpass("Ingrese su clave:\n")
+port = input("Ingrese el puuerto: \n")
 con = Connection()
 con.openConnection()
+print("Creando Tablas...")
 tabla_libro = pd.read_sql_query(leer_tabla_libro(), con.connection)
 tabla_autor = pd.read_sql_query(leer_tabla_autor(), con.connection)
 tabla_autor_libro = pd.read_sql_query(leer_tabla_autor_libro(), con.connection)
@@ -91,7 +98,7 @@ figBarautores_mas_famosos_comentarios= px.bar(dfautores_mas_famosos_comentarios.
 
 query = pd.read_sql_query(autores_mas_famosos_por_num_votantes(), con.connection)
 dfautores_mas_famosos_por_num_votantes = pd.DataFrame(query, columns=["nombre", "num_votantes"])
-figBarautores_mas_famosos_por_num_votantes= px.scatter(dfautores_mas_famosos_por_num_votantes.head(20), x="nombre", y="num_votantes")
+figBarautores_mas_famosos_por_num_votantes= px.bar(dfautores_mas_famosos_por_num_votantes.head(20), x="nombre", y="num_votantes")
 #para crear scatterplot
 # fig = px.scatter(df.query("year==2007"), x="gdpPercap", y="lifeExp",
 # 	         size="pop", color="continent",

@@ -68,7 +68,7 @@ def cb_render(*vals):
         con.openConnection()
         busqueda = pd.read_sql_query(buscar_libro_por_titulo(vals[0].lower()), con.connection)
         con.closeConnection()
-        df_busqueda = pd.DataFrame(busqueda, columns=["libro","autor"])
+        df_busqueda = pd.DataFrame(busqueda, columns=["Libro","Numero de paginas"])
         table = dbc.Table.from_dataframe(df_busqueda, striped=True, bordered=True, hover=False)
         busquedas = df_busqueda.astype(str).values.tolist()
         return table
