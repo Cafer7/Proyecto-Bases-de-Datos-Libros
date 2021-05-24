@@ -10,16 +10,25 @@ import plotly.express as px
 import pandas as pd
 
 class Connection:
-    def __init__(self, usuario="postgres", contra="linux123", puerto="5432"):
-        self.user = usuario
-        self.password = contra
-        self.port = puerto
-        self.connection = None
+    def __init__(self, usuario, contra, puerto):
+        if usuario != "":
+            self.user = usuario
+        else:
+            self.user = "postgres"
+        if contra != "":
+            self.password = contra
+        else:
+            self.password = "linux123"
+        if port != "":
+            self.port = puerto
+        else:
+            self.port ="5432"
     def openConnection(self):
         try:
             self.connection = psycopg2.connect(host="localhost",port=self.port,dbname="proyecto",user=self.user,password=self.password)
         except Exception as e:
             print (e)
+            pass
 
     def closeConnection(self):
         self.connection.close()
@@ -27,7 +36,7 @@ class Connection:
 #Conexión a la base de datos
 user = input("Ingrese usuario: \n")
 password = getpass.getpass("Ingrese su clave:\n")
-port = input("Ingrese el puerto: \n")
+port = input("Ingrese el puuerto: \n")
 con = Connection(user,password,port)
 con.openConnection()
 print("Creando Tablas...")
