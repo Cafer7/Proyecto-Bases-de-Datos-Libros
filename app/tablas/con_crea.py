@@ -27,8 +27,8 @@ class Connection:
 #Conexión a la base de datos
 user = input("Ingrese usuario: \n")
 password = getpass.getpass("Ingrese su clave:\n")
-port = input("Ingrese el puuerto: \n")
-con = Connection()
+port = input("Ingrese el puerto: \n")
+con = Connection(user,password,port)
 con.openConnection()
 print("Creando Tablas...")
 tabla_libro = pd.read_sql_query(leer_tabla_libro(), con.connection)
