@@ -108,10 +108,7 @@ figBarautores_mas_famosos_comentarios= px.bar(dfautores_mas_famosos_comentarios.
 query = pd.read_sql_query(autores_mas_famosos_por_num_votantes(), con.connection)
 dfautores_mas_famosos_por_num_votantes = pd.DataFrame(query, columns=["nombre", "num_votantes"])
 figBarautores_mas_famosos_por_num_votantes= px.bar(dfautores_mas_famosos_por_num_votantes.head(20), x="nombre", y="num_votantes")
-#para crear scatterplot
-# fig = px.scatter(df.query("year==2007"), x="gdpPercap", y="lifeExp",
-# 	         size="pop", color="continent",
-#                  hover_name="country", log_x=True, size_max=60)
+
 # numero de Libros por idioma
 query = pd.read_sql_query(cantidad_libros_por_idioma(), con.connection)
 dfnumero_libros_por_idiomas = pd.DataFrame(query, columns=["idioma", "total"])
