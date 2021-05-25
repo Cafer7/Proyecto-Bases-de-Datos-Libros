@@ -1,7 +1,7 @@
 from title import *
 external_stylesheets = ["https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
+app.title = "Análisis de Goodreads"
 #libros
 libros_votados = crear_fila_columna_fig(titulo1="10 Libros mas votados", fig1=figBarLibros_10mvotados, id1="10Libros+Votados")
 libros_rankeados = crear_fila_columna_fig(titulo2="10 Libros mejor Rankeados",fig2=figBarLibros_10mvotados_1000votos,id2="10Libros+Rankeados")
@@ -20,7 +20,7 @@ autores_rankeados = crear_fila_columna_fig(titulo2="Mejores autores segun la cal
 autores_comentados = crear_fila_columna_fig(titulo1="Autores famosos segun el numero de comentarios",fig1=figBarautores_mas_famosos_comentarios,id1="Autoresfamososcomentarios")
 figuras_autores = [autores_votados, autores_comentados, autores_rankeados]
 #Layout
-app.layout = html.Div(children=[
+app.layout = html.Div(className="container-fluid", style={"overflow": "hidden"},children=[
     app_bar(),
     html.Div(id='lista_buscados',),
     html.Div(className="container-fluid", children=[

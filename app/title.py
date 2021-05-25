@@ -12,6 +12,7 @@ def app_bar():
                     html.Div(
                         html.Center(
                             dcc.Input(
+                                style={"lineHeight": "inherit"},
                                 id="input_{}".format("search"),
                                 type="search",
                                 placeholder="Ingrese un titulo",
