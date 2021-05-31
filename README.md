@@ -1,4 +1,4 @@
-# Proyecto-Bases-de-Datos-Libros
+# Proyecto Bases de Datos Libros
 Es un repositorio creado por Juan Jose Caballero, Juan David Martinez, Guillermo Ribero y Camilo Silva para el proyecto de Ingenieria de Datos_Manejo de Bases de Datos Periodo 2021-1.
 
 La carpeta llamada modelo relacional implementado contiene el servidor y la base de datos ya para ingresar a postgres. 
